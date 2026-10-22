@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f3ed" />
+  <title>소리의 음 — Pitch Finder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar"><a class="brand" href="#"><span class="brand-mark">♪</span><span><b>소리의 음</b><small>PITCH FINDER</small></span></a><div class="signal"><span class="signal-dot" id="signalDot"></span><span id="signalText">마이크 대기 중</span></div></header>
+    <section class="intro"><p class="kicker">REAL-TIME TUNER / 01</p><h1>지금 들리는 소리는<br><em>어떤 음</em>일까요?</h1><p class="description">마이크에 소리를 들려주세요. 가장 가까운 음과 음정의 높낮이를 바로 알려드릴게요.</p></section>
+    <section class="tuner-card" aria-live="polite"><div class="tuner-head"><span class="eyebrow">CURRENT PITCH</span><span class="confidence" id="confidence">—</span></div><canvas id="dial" aria-label="음정이 얼마나 높은지 낮은지 보여주는 다이얼"></canvas><div class="pitch-readout"><div class="note" id="note">—</div><div class="note-name" id="noteName">소리를 기다리는 중</div><div class="frequency"><strong id="frequency">—</strong><span>Hz</span></div></div><div class="meter-labels"><span>낮음</span><span class="target">정확해요</span><span>높음</span></div><div class="cents-pill" id="centsPill">센트 오차 <b id="cents">—</b></div></section>
+    <section class="controls"><button class="primary" id="startBtn"><span class="mic-icon">●</span><span id="startLabel">마이크 시작하기</span><span class="arrow">→</span></button><button class="secondary" id="stopBtn" disabled>측정 멈추기</button></section>
+    <section class="tips-grid"><article><span class="tip-number">01</span><div><h2>조용한 곳에서</h2><p>주변 소음이 적을수록 더 정확하게 측정돼요.</p></div></article><article><span class="tip-number">02</span><div><h2>한 음을 길게</h2><p>악기나 목소리를 1초 이상 일정하게 내보세요.</p></div></article><article><span class="tip-number">03</span><div><h2>센트 오차 확인</h2><p>0에 가까울수록 기준 음에 정확히 맞아요.</p></div></article></section>
+    <footer><span>STANDARD TUNING · A4 = 440 Hz</span><span>마이크 권한은 이 브라우저에서만 사용돼요.</span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
