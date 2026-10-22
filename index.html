@@ -1,22 +1,17 @@
 <!doctype html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f5f3ed" />
-  <title>소리의 음 — Pitch Finder</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <main class="app-shell">
-    <header class="topbar"><a class="brand" href="#"><span class="brand-mark">♪</span><span><b>소리의 음</b><small>PITCH FINDER</small></span></a><div class="signal"><span class="signal-dot" id="signalDot"></span><span id="signalText">마이크 대기 중</span></div></header>
-    <section class="intro"><p class="kicker">REAL-TIME TUNER / 01</p><h1>지금 들리는 소리는<br><em>어떤 음</em>일까요?</h1><p class="description">마이크에 소리를 들려주세요. 가장 가까운 음과 음정의 높낮이를 바로 알려드릴게요.</p></section>
-    <section class="tuner-card" aria-live="polite"><div class="tuner-head"><span class="eyebrow">CURRENT PITCH</span><span class="confidence" id="confidence">—</span></div><canvas id="dial" aria-label="음정이 얼마나 높은지 낮은지 보여주는 다이얼"></canvas><div class="pitch-readout"><div class="note" id="note">—</div><div class="note-name" id="noteName">소리를 기다리는 중</div><div class="frequency"><strong id="frequency">—</strong><span>Hz</span></div></div><div class="meter-labels"><span>낮음</span><span class="target">정확해요</span><span>높음</span></div><div class="cents-pill" id="centsPill">센트 오차 <b id="cents">—</b></div></section>
-    <section class="controls"><button class="primary" id="startBtn"><span class="mic-icon">●</span><span id="startLabel">마이크 시작하기</span><span class="arrow">→</span></button><button class="secondary" id="stopBtn" disabled>측정 멈추기</button><button class="record-btn" id="recordBtn" disabled><span class="record-dot"></span><span id="recordLabel">녹음 시작</span></button></section>
-    <section class="recording-panel" id="recordingPanel" hidden><div><span class="eyebrow">RECORDED TAKE</span><h2 id="recordingTitle">아직 녹음된 소리가 없어요</h2><p id="recordingHint">마이크를 시작한 뒤 녹음 버튼을 눌러보세요.</p></div><div class="recording-actions"><audio id="audioPlayer" controls></audio><button class="replay-btn" id="replayBtn" disabled>원본과 음정 다시 듣기 <span>↗</span></button></div></section>
-    <section class="tips-grid"><article><span class="tip-number">01</span><div><h2>조용한 곳에서</h2><p>주변 소음이 적을수록 더 정확하게 측정돼요.</p></div></article><article><span class="tip-number">02</span><div><h2>한 음을 길게</h2><p>악기나 목소리를 1초 이상 일정하게 내보세요.</p></div></article><article><span class="tip-number">03</span><div><h2>센트 오차 확인</h2><p>0에 가까울수록 기준 음에 정확히 맞아요.</p></div></article></section>
-    <footer><span>STANDARD TUNING · A4 = 440 Hz</span><span>마이크 권한은 이 브라우저에서만 사용돼요.</span></footer>
-  </main>
-  <script src="game.js"></script>
-</body>
-</html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f3ed"><title>소리의 음 — 작곡 스튜디오</title><link rel="stylesheet" href="styles.css"></head>
+<body><main class="app-shell">
+<header class="topbar"><a class="brand" href="#"><span class="brand-mark">♪</span><span><b>소리의 음</b><small>MELODY STUDIO</small></span></a><div class="signal"><span class="signal-dot" id="signalDot"></span><span id="signalText">마이크 대기 중</span></div></header>
+<section class="intro"><p class="kicker">HUM TO COMPOSE / 01</p><h1>흥얼거림을<br><em>음악으로</em> 바꿔보세요.</h1><p class="description">음정이 없어도 괜찮아요. 부른 멜로디를 눈으로 보고, 고치고, 곡으로 만들어보세요.</p></section>
+<section class="tuner-card" aria-live="polite"><div class="tuner-head"><span class="eyebrow">CURRENT PITCH</span><span class="confidence" id="confidence">—</span></div><canvas id="dial"></canvas><div class="pitch-readout"><div class="note" id="note">—</div><div class="note-name" id="noteName">소리를 기다리는 중</div><div class="frequency"><strong id="frequency">—</strong><span>Hz</span></div></div><div class="meter-labels"><span>낮음</span><span class="target">정확해요</span><span>높음</span></div><div class="cents-pill">센트 오차 <b id="cents">—</b></div></section>
+<section class="controls"><button class="primary" id="startBtn">● <span id="startLabel">마이크 시작하기</span><b>→</b></button><button class="secondary" id="stopBtn" disabled>측정 멈추기</button><button class="record-btn" id="recordBtn" disabled><span></span><span id="recordLabel">녹음 시작</span></button></section>
+<section class="recording-panel" id="recordingPanel" hidden><div><span class="eyebrow">RECORDED TAKE</span><h2 id="recordingTitle">녹음이 준비됐어요</h2><p id="recordingHint">원본을 듣거나 아래 작곡 화면에서 편집하세요.</p></div><div class="recording-actions"><audio id="audioPlayer" controls></audio><button class="replay-btn" id="replayBtn" disabled>원본과 음정 다시 듣기 ↗</button></div></section>
+<section class="composer" id="composer" hidden><div class="section-heading"><div><span class="eyebrow">COMPOSITION DESK</span><h2>내 멜로디를 편집해요</h2></div><span class="save-state" id="saveState">자동 저장됨</span></div>
+<div class="timeline-wrap"><canvas id="timeline" aria-label="녹음된 멜로디 타임라인"></canvas><div class="timeline-help">음표를 드래그해서 높이를 바꿀 수 있어요 · 클릭하면 음을 선택합니다</div></div>
+<div class="studio-grid"><div class="tool-card"><label>조성</label><div class="select-row"><select id="keySelect"><option value="0">C</option><option value="1">C♯ / D♭</option><option value="2">D</option><option value="3">D♯ / E♭</option><option value="4">E</option><option value="5">F</option><option value="6">F♯ / G♭</option><option value="7">G</option><option value="8">G♯ / A♭</option><option value="9">A</option><option value="10">A♯ / B♭</option><option value="11">B</option></select><select id="modeSelect"><option value="major">Major</option><option value="minor">Minor</option></select></div><button class="small-btn" id="quantizeBtn">스케일 안으로 음 정리</button><p id="scaleHint">C Major의 음만 사용하도록 안내합니다.</p></div>
+<div class="tool-card"><label>리듬</label><div class="tempo"><input id="bpm" type="number" min="40" max="220" value="100"><span>BPM</span><button class="metro" id="metroBtn">메트로놈 꺼짐</button></div><p>음표 길이를 박자에 맞춰 정리합니다.</p><button class="small-btn" id="snapBtn">박자에 맞추기</button></div>
+<div class="tool-card"><label>코드 추천</label><div class="chord-list" id="chordList"></div><p>멜로디의 조성과 분위기에 어울리는 진행입니다.</p></div></div>
+<div class="compose-actions"><select id="instrumentSelect"><option value="piano">피아노</option><option value="guitar">기타</option><option value="bass">베이스</option><option value="drums">드럼</option></select><button class="play-composition" id="playComposition">▶ 작곡한 멜로디 재생</button><button class="secondary" id="stopComposition">■ 정지</button><button class="secondary" id="undoBtn">↶ 실행 취소</button><button class="secondary" id="clearBtn">전체 삭제</button></div>
+<div class="export-actions"><button id="midiBtn">MIDI 다운로드</button><button id="wavBtn">WAV 다운로드</button><button id="shareBtn">공유 링크 복사</button><span id="exportStatus"></span></div></section>
+<section class="tips-grid"><article><b>01</b><div><h2>흥얼거리기</h2><p>한 음을 길게 불러도, 멜로디를 이어 불러도 좋아요.</p></div></article><article><b>02</b><div><h2>눈으로 고치기</h2><p>타임라인의 음표를 드래그해 원하는 음으로 바꿔보세요.</p></div></article><article><b>03</b><div><h2>곡으로 듣기</h2><p>조성·리듬·코드를 정하고 나만의 곡을 재생해보세요.</p></div></article></section><footer><span>STANDARD TUNING · A4 = 440 Hz</span><span>작곡 데이터는 이 브라우저에만 저장됩니다.</span></footer>
+</main><script src="https://cdn.jsdelivr.net/npm/soundfont-player@0.12.0/dist/soundfont-player.min.js"></script><script src="game.js"></script></body></html>
